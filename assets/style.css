@@ -1,9 +1,14 @@
-.h-16{
+.h-16 {
     border-radius: 30px;
     width: auto;
-    
+
 }
 
-body{
+body {
     background-color: rgb(100 116 139);
+}
+
+#map {
+    height: 700px;
+    width: 100%;
 }
