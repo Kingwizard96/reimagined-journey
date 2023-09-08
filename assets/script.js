@@ -42,3 +42,4 @@ function createMarker(place) {
 }
 
 initialize()
+
