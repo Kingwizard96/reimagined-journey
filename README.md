@@ -10,5 +10,8 @@ In future working we would like to add the options of gps directioning so when a
 
 link to our deployed repo - https://github.com/Kingwizard96/reimagined-journey
 
-link to our deployed app - 
+link to our deployed app - https://kingwizard96.github.io/reimagined-journey/
 
+
+
+C:\Users\xingc\OneDrive\Pictures\Screenshots\Screenshot (11).png
