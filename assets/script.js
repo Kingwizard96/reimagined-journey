@@ -1,9 +1,45 @@
 var map;
 var service;
-var infowindow;
+var infowindow = new google.maps.InfoWindow();
 console.log("hello")
-function initialize() {
-    var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
+var latNumber;
+var longNumber;
+
+function initMap() {
+    console.log('hi')
+}
+var gettingCoords = document.getElementById('geocode-address');
+var button = document.getElementById('btn')
+button.addEventListener('click', function (e) {
+    e.preventDefault();
+    var address = document.getElementById('geocode-address').value;
+    geocodeAddress(address);
+});
+
+console.log('hello2')
+
+function geocodeAddress(address) {
+    var geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ address: address }, function (results, status) {
+        if (status === 'OK' && results[0]) {
+            var formattedAddress = results[0].formatted_address;
+            var location = results[0].geometry.location;
+
+            console.log('Formatted Address: ' + formattedAddress);
+            console.log('Latitude: ' + location.lat());
+            console.log('Longitude: ' + location.lng());
+            initialize(location.lat(), location.lng());
+        } else {
+            console.log('Geocoding was not successful for the following reason: ' + status);
+        }
+    });
+}
+//initMap();
+//geocodeAddress();
+
+function initialize(Latitude, Longitude) {
+    var pyrmont = new google.maps.LatLng(Latitude, Longitude);
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: pyrmont,
@@ -12,8 +48,8 @@ function initialize() {
 
     var request = {
         location: pyrmont,
-        radius: '500',
-        type: ['restaurant']
+        radius: '1000',
+        type: ['restaurants']
     };
 
     service = new google.maps.places.PlacesService(map);
@@ -33,13 +69,15 @@ function createMarker(place) {
     const marker = new google.maps.Marker({
         map,
         position: place.geometry.location,
+        title: place.name
     });
 
     google.maps.event.addListener(marker, "click", () => {
         infowindow.setContent(place.name || "");
         infowindow.open(map);
+        console.log(this)
     });
 }
 
-initialize()
+//initialize()
 
