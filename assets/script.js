@@ -39,15 +39,15 @@ function geocodeAddress(address) {
 //geocodeAddress();
 
 function initialize(Latitude, Longitude) {
-    var pyrmont = new google.maps.LatLng(Latitude, Longitude);
+    var userLocation = new google.maps.LatLng(Latitude, Longitude);
 
     map = new google.maps.Map(document.getElementById('map'), {
-        center: pyrmont,
+        center: userLocation,
         zoom: 15
     });
 
     var request = {
-        location: pyrmont,
+        location: userLocation,
         radius: '10000',
         type: ['pet_store']
     };
