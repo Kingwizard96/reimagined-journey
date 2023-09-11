@@ -67,6 +67,7 @@ function createMarker(place) {
     if (!place.geometry || !place.geometry.location) return;
 
     const marker = new google.maps.Marker({
+     //   icon:image,
         map,
         position: place.geometry.location,
         title: place.name
