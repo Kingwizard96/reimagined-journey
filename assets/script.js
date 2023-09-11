@@ -48,8 +48,8 @@ function initialize(Latitude, Longitude) {
 
     var request = {
         location: pyrmont,
-        radius: '1000',
-        type: ['restaurants']
+        radius: '10000',
+        type: ['pet_store']
     };
 
     service = new google.maps.places.PlacesService(map);
@@ -67,7 +67,7 @@ function createMarker(place) {
     if (!place.geometry || !place.geometry.location) return;
 
     const marker = new google.maps.Marker({
-     //   icon:image,
+        //   icon:image,
         map,
         position: place.geometry.location,
         title: place.name
