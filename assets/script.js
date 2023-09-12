@@ -5,8 +5,6 @@ console.log("hello")
 var latNumber;
 var longNumber;
 
-var storage = localStorage.getItem("address")
-
 function initMap() {
     console.log('hi')
 }
@@ -16,9 +14,6 @@ button.addEventListener('click', function (e) {
     e.preventDefault();
     var address = document.getElementById('geocode-address').value;
     geocodeAddress(address);
-    if (address === 'OK') {
-        localStorage.setItem(storage, 'latlng');
-    }
 });
 
 console.log('hello2')
@@ -45,6 +40,7 @@ function geocodeAddress(address) {
 
 function initialize(Latitude, Longitude) {
     var userLocation = new google.maps.LatLng(Latitude, Longitude);
+    localStorage.setItem("latlng", userLocation);
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: userLocation,
