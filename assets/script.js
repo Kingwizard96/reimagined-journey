@@ -80,5 +80,6 @@ function createMarker(place) {
         console.log(this)
     });
 }
+
 //initialize()
 
