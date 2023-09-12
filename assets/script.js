@@ -5,6 +5,8 @@ console.log("hello")
 var latNumber;
 var longNumber;
 
+var storage = localStorage.getItem("address")
+
 function initMap() {
     console.log('hi')
 }
@@ -14,6 +16,9 @@ button.addEventListener('click', function (e) {
     e.preventDefault();
     var address = document.getElementById('geocode-address').value;
     geocodeAddress(address);
+    if (address === 'OK') {
+        localStorage.setItem(storage, 'latlng');
+    }
 });
 
 console.log('hello2')
@@ -51,7 +56,7 @@ function initialize(Latitude, Longitude) {
         radius: '10000',
         type: ['pet_store']
     };
-
+    //testing.
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
 }
@@ -79,6 +84,5 @@ function createMarker(place) {
         console.log(this)
     });
 }
-
 //initialize()
 
