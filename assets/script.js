@@ -39,19 +39,20 @@ function geocodeAddress(address) {
 //geocodeAddress();
 
 function initialize(Latitude, Longitude) {
-    var pyrmont = new google.maps.LatLng(Latitude, Longitude);
+    var userLocation = new google.maps.LatLng(Latitude, Longitude);
+    localStorage.setItem("latlng", userLocation);
 
     map = new google.maps.Map(document.getElementById('map'), {
-        center: pyrmont,
+        center: userLocation,
         zoom: 15
     });
 
     var request = {
-        location: pyrmont,
-        radius: '1000',
-        type: ['restaurants']
+        location: userLocation,
+        radius: '10000',
+        type: ['pet_store']
     };
-
+    //testing.
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
 }
@@ -67,6 +68,7 @@ function createMarker(place) {
     if (!place.geometry || !place.geometry.location) return;
 
     const marker = new google.maps.Marker({
+        //   icon:image,
         map,
         position: place.geometry.location,
         title: place.name
@@ -78,8 +80,6 @@ function createMarker(place) {
         console.log(this)
     });
 }
-
-
 
 //initialize()
 
